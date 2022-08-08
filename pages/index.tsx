@@ -30,8 +30,8 @@ const Home: NextPage<{ posts: GetPostsQuery["posts"] }> = ({ posts }) => {
 		});
 
 	return (
-		<div className="h-screen w-screen p-8 m-auto justify-center">
-			<div className="justify-center w-2/3 m-auto">
+		<div className="h-screen w-screen m-auto justify-center">
+			<div className="justify-center w-2/3 m-auto p-8">
 				<h2 className="text-xl font-mono tracking-wide font-semibold mb-6">
 					Posts
 				</h2>
@@ -46,7 +46,7 @@ const Home: NextPage<{ posts: GetPostsQuery["posts"] }> = ({ posts }) => {
 									{post.title}
 								</span>
 							</p>
-							<p>{post.content}</p>
+							<p className="prose p-2">{post.content}</p>
 							<div className="w-full bg-gray-200 h-px" />
 							<div className="flex items-center text-sm">
 								<p className="flex-1">
@@ -57,6 +57,33 @@ const Home: NextPage<{ posts: GetPostsQuery["posts"] }> = ({ posts }) => {
 										{getDistance(post.created_at)}
 									</span>
 								</p>
+							</div>
+							{post?.comments?.length > 0 && (
+								<h3 className="font-mono !mt-6">Comments</h3>
+							)}
+							<div className="space-y-4">
+								{post?.comments.map((comment) => (
+									<div
+										key={comment.id}
+										className="p-4 border-2 border-pink-200 rounded space-y-2 shadow-sm"
+									>
+										<p className="prose p-2">{comment.content}</p>
+										<div className="w-full bg-gray-200 h-px" />
+										<div className="flex items-center text-sm">
+											<p className="flex-1">
+												By:{" "}
+												<span className="font-mono">
+													{comment.user.username}
+												</span>
+											</p>
+											<p>
+												<span className="font-mono text-xs">
+													{getDistance(comment.created_at)}
+												</span>
+											</p>
+										</div>
+									</div>
+								))}
 							</div>
 						</div>
 					))}
