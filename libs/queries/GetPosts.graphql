@@ -1,0 +1,22 @@
+query GetPosts {
+	posts {
+		id
+		title
+		content
+		created_at
+		user {
+			id
+			username
+		}
+		comments(order_by: { created_at: desc }) {
+			id
+			user_id
+			content
+			created_at
+			user {
+				id
+				username
+			}
+		}
+	}
+}
