@@ -1,5 +1,5 @@
 {
-  "name": "hasura-query",
+  "name": "hasura-query-example",
   "version": "0.1.0",
   "private": true,
   "scripts": {
