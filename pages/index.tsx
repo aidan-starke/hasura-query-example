@@ -35,7 +35,7 @@ const Home: NextPage<{ posts: GetPostsQuery["posts"] }> = ({ posts }) => {
 				<h2 className="text-xl font-mono tracking-wide font-semibold mb-6">
 					Posts
 				</h2>
-				<div className="space-y-6">
+				<div className="space-y-6" suppressHydrationWarning>
 					{(data?.posts ?? posts).map((post) => (
 						<div
 							key={post.id}
